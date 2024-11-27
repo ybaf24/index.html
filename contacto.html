@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+        }
+        nav {
+            background-color: #007BFF;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .back-to-top:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="acercade.html">Acerca de</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="juegoDePreguntas.html">Juego de Preguntas</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Formulario de Registro</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="nombre">Nombre (max 20 caracteres):</label>
+                <input type="text" id="nombre" name="nombre" maxlength="20" required>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido (max 20 caracteres):</label>
+                <input type="text" id="apellido" name="apellido" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 1234567890">
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad (16-120 años):</label>
+                <input type="number" id="edad" name="edad" min="16" max="120" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <textarea id="direccion" name="direccion"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="provincia">Provincia:</label>
+                <input type="text" id="provincia" name="provincia" list="provincias">
+                <datalist id="provincias">
+                    <option value="Chubut">
+                    <option value="Neuquén">
+                    <option value="Río Negro">
+                    <option value="Santa Cruz">
+                    <option value="Tierra del Fuego">
+                    <option value="La Pampa">
+                    <option value="Mendoza">
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label for="codigoPostal">Código Postal (A1234ABC):</label>
+                <input type="text" id="codigoPostal" name="codigoPostal" pattern="^[A][0-9]{4}[A-Z]{3}$" required>
+            </div>
+            <div class="form-group">
+                <label>Método preferido de contacto:</label>
+                <div>
+                    <label><input type="radio" name="metodoContacto" value="correo electrónico" checked> Correo electrónico</label>
+                    <label><input type="radio" name="metodoContacto" value="correo postal"> Correo postal</label>
+                    <label><input type="radio" name="metodoContacto" value="teléfono"> Teléfono</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Tipo de suscripción:</label>
+                <div>
+                    <label><input type="checkbox" name="suscripcion" value="noticias"> Noticias</label>
+                    <label><input type="checkbox" name="suscripcion" value="promociones"> Promociones</label>
+                    <label><input type="checkbox" name="suscripcion" value="alertas" checked> Alertas</label>
+                    <label><input type="checkbox" name="suscripcion" value="eventos"> Eventos</label>
+                </div>
+            </div>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Campo</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody id="resultTable">
+                <tr><td>Nombre</td><td></td></tr>
+                <tr><td>Apellido</td><td></td></tr>
+                <tr><td>Email</td><td></td></tr>
+                <tr><td>Teléfono</td><td></td></tr>
+                <tr><td>Edad</td><td></td></tr>
+                <tr><td>Dirección</td><td></td></tr>
+                <tr><td>Provincia</td><td></td></tr>
+                <tr><td>Código Postal</td><td></td></tr>
+                <tr><td>Método de Contacto</td><td></td></tr>
+                <tr><td>Suscripción</td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="#top" class="back-to-top">&#8593;</a> 
+
+    <script src="script.js"></script>
+</body>
+</html>

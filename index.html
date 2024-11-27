@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patricia Morales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: #ffffff;
+            border-bottom: 1px solid #ccc;
+            z-index: 1000;
+            padding: 10px 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+        .logo {
+            width: 50px;
+            display: inline-block;
+            animation: rotate 2s linear;
+        }
+        @keyframes rotate {
+            from { transform: rotateY(0); }
+            to { transform: rotateY(360deg); }
+        }
+        main {
+            margin-top: 120px; 
+            padding: 20px;
+        }
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="logo_CURZA.png" alt="Logo CURZA" class="logo">
+            <h1>Patricia Morales</h1>
+            <ul>
+                <li><a href="index.html">inicio</a></li>
+                <li><a href="acercade.html">acerca de</a></li>
+                <li><a href="contacto.html">contacto</a></li>
+                <li><a href="juegoDeAdivinanza.html">Juego de Adivinanza</a></li>
+            </ul>
+        </nav>
+    </header>   
+    <main>
+        <h2>Bienvenido a mi página personal</h2>
+        <p>Este es el sitio donde encontrarás información sobre mí y mis intereses, navega a través de las secciones.</p>
+        <section>
+        <h3>Consigna del Juego</h3>
+        <p>En este juego, deberás completar diferentes desafíos de programación para avanzar de nivel. Tu tarea es resolver los problemas que se presenten en cada etapa y obtener el mayor puntaje posible. ¡Buena suerte y que comience la diversión!</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Patricia Morales. Todos los derechos reservados.</p>
+        <p>Universidad del Comahue, Monseñor Esandi, Viedma</p>
+        <a href="#top" class="back-to-top">&#8593;</a>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

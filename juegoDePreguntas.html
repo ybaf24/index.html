@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Preguntas y Respuestas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: #ffffff;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+        main {
+            margin-top: 100px;
+            padding: 20px;
+            text-align: center;
+        }
+        .game-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .answer {
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="acercade.html">Acerca de</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="adivinanza.html">Juego de Adivinanza</a></li>
+                <li><a href="juegoDePreguntas.html">Juego de Preguntas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="game-container">
+            <h2>Juego de Preguntas y Respuestas</h2>
+            <p>Responde las siguientes preguntas:</p>
+
+            <div class="question" id="question"></div>
+
+            <div id="answers"></div>
+
+            <button onclick="nextQuestion()">Siguiente Pregunta</button>
+
+            <div class="result" id="result"></div>
+            <div id="score"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Patricia Morales. Todos los derechos reservados.</p>
+        <p>Universidad del Comahue, Monseñor Esandi, Viedma</p>
+        <a href="#top" class="back-to-top">&#8593;</a>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "¿Cuál es la capital de Francia?",
+                answers: ["Madrid", "París", "Londres", "Roma"],
+                correctAnswer: 1
+            },
+            {
+                question: "¿Quién pintó la Mona Lisa?",
+                answers: ["Vincent Van Gogh", "Pablo Picasso", "Leonardo Da Vinci", "Claude Monet"],
+                correctAnswer: 2 
+            },
+            {
+                question: "¿En qué año llegó el hombre a la Luna?",
+                answers: ["1969", "1959", "1972", "1981"],
+                correctAnswer: 0 
+            },
+            {
+                question: "¿Cuál es el río más largo del mundo?",
+                answers: ["Amazonas", "Nilo", "Yangtsé", "Misisipi"],
+                correctAnswer: 0 
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function displayQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('question').textContent = question.question;
+
+            const answersDiv = document.getElementById('answers');
+            answersDiv.innerHTML = ''; 
+
+            question.answers.forEach((answer, index) => {
+                const answerBtn = document.createElement('button');
+                answerBtn.textContent = answer;
+                answerBtn.classList.add('answer');
+                answerBtn.onclick = () => checkAnswer(index);
+                answersDiv.appendChild(answerBtn);
+            });
+        }
+
+        function checkAnswer(selectedAnswerIndex) {
+            const question = questions[currentQuestionIndex];
+            const resultDiv = document.getElementById('result');
+            const scoreDiv = document.getElementById('score');
+
+            if (selectedAnswerIndex === question.correctAnswer) {
+                resultDiv.textContent = "¡Correcto!";
+                resultDiv.style.color = 'green';
+                score++;
+            } else {
+                resultDiv.textContent = "¡Incorrecto!";
+                resultDiv.style.color = 'red';
+            }
+
+            scoreDiv.textContent = `Puntaje: ${score}`;
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+                document.getElementById('result').textContent = ''; 
+            } else {
+                document.getElementById('question').textContent = "¡Juego Terminado!";
+                document.getElementById('answers').innerHTML = '';
+                document.getElementById('result').textContent = `Tu puntaje final es: ${score}`;
+                document.getElementById('score').textContent = '';
+            }
+        }
+
+        displayQuestion();
+    </script>
+
+</body>
+</html>
